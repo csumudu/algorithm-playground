@@ -1,8 +1,7 @@
 import {
   PauseCircleOutlined,
   PlayCircleOutlined,
-  StopOutlined,
-  UndoOutlined,
+  UndoOutlined
 } from "@ant-design/icons";
 import { atom, atomFamily, selectorFamily } from "recoil";
 import { v4 as uuidv4 } from "uuid";

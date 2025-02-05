@@ -1,12 +1,12 @@
 import { useRecoilValue } from "recoil";
-import { PlayerAction, PlayerActionType, SortAlgoTypes } from "../models";
+import { useChildSelectedAction } from "../../state/hooks/use-update-child-player";
 import { SortState } from "../../state/sort/sort-data.atoms";
 import {
   isSortStart,
   selectChildControls,
   selectChildSelectedControl,
 } from "../../state/sort/sort-data.selectors";
-import { useChildSelectedAction } from "../../state/hooks/use-update-child-player";
+import { PlayerAction, SortAlgoTypes } from "../models";
 
 export const useGetSortWidgetParams = (type: SortAlgoTypes) => {
   const data = useRecoilValue(SortState.sourceData)[type];

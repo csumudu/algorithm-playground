@@ -1,8 +1,3 @@
-import {
-  PauseCircleOutlined,
-  PlayCircleOutlined,
-  UndoOutlined,
-} from "@ant-design/icons";
 import { selector, selectorFamily } from "recoil";
 import {
   PlayerAction,

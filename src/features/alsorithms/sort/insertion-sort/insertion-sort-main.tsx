@@ -66,7 +66,7 @@ const InsertionSortMain = () => {
 
           if (value.type == SortChangeType.SORTED) {
             console.log(change);
-            Object.keys(change).forEach((k, i) => {
+            Object.keys(change).forEach((k) => {
               const itm = data[k];
               update(itm.id, {
                 isSorted: true,
