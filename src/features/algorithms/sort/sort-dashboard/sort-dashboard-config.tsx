@@ -1,12 +1,12 @@
 import { Card } from "antd";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import AppSlider from "../../shared/components/app-slider";
-import PlayControls from "../../shared/components/play-controls";
-import { SortState } from "../../state/sort/sort-data.atoms";
-import { selectPlayerActions } from "../../state/sort/sort-data.selectors";
+import AppSlider from "../../../../shared/components/app-slider";
+import PlayControls from "../../../../shared/components/play-controls";
+import { SortState } from "../../../../state/sort/sort-data.atoms";
+import { selectPlayerActions } from "../../../../state/sort/sort-data.selectors";
 import ListLength from "./list-len";
 
-const DashboardConfig = () => {
+const SortDashboardConfig = () => {
   const playerControls = useRecoilValue(selectPlayerActions);
   const speed = useRecoilValue(SortState.speed);
   const setSelectedAction = useSetRecoilState(SortState.selectedAction);
@@ -31,4 +31,4 @@ const DashboardConfig = () => {
   );
 };
 
-export default DashboardConfig;
+export default SortDashboardConfig;

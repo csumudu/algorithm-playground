@@ -1,7 +1,7 @@
 import { InputNumber } from "antd";
 import { useDeferredValue, useTransition } from "react";
 import { useRecoilState } from "recoil";
-import { SortState } from "../../state/sort/sort-data.atoms";
+import { SortState } from "../../../../state/sort/sort-data.atoms";
 
 const ListLength = () => {
   const [_, startTransition] = useTransition();

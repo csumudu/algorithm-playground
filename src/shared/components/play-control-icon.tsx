@@ -10,7 +10,6 @@ const PlayControlIcon: FC<{
   const IconComp = ctrl.component;
   return (
     <IconComp
-      key={name}
       className={`text-2xl`}
       style={{
         color: ctrl.isSelected

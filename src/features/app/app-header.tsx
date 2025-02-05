@@ -1,13 +1,6 @@
-import { Menu, MenuProps } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { Link } from "react-router";
-
-const items1: MenuProps["items"] = [
-  {
-    key: 1,
-    label: "Home",
-  },
-];
+import AppMenu from "./app-menu";
 
 const AppHeader = () => {
   return (
@@ -21,13 +14,7 @@ const AppHeader = () => {
           playground
         </span>
       </Link>
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={["2"]}
-        items={items1}
-        style={{ flex: 1, minWidth: 0 }}
-      />
+      <AppMenu />
     </Header>
   );
 };
