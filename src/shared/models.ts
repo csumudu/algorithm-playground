@@ -16,6 +16,7 @@ export interface DataItem<T> {
   animationName?: string;
   borderColor?: string;
   isSorted?: boolean;
+  resetTimeout?: number;
 }
 
 export enum PlayerActionType {
@@ -39,6 +40,7 @@ export enum SortChangeType {
   MOVED = "MOVED",
   HIGHLIGHT = "HIGHLIGHT",
   PROCESSING = "PROCESSING",
+  COMPLETED = "COMPLETED",
 }
 
 export interface SortChange {
@@ -67,9 +69,7 @@ export type ChildSelectedPlayerAction = {
   [key in SortAlgoTypes]?: PlayerAction;
 };
 
-export type ChildPlayerActions = {
-  [key in SortAlgoTypes]?: Array<PlayerAction>;
-};
+export type ChildPlayerActions = Array<PlayerAction>;
 
 export type SET<T> = (s: RecoilState<T>, u: ((currVal: T) => T) | T) => void;
 export type GET<T> = (a: RecoilValue<T>) => T;

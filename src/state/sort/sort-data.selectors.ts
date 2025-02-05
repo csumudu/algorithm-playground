@@ -54,27 +54,10 @@ export const selectChildControls = selectorFamily<
 >({
   key: "sortState.selector.getSelectedChildControl",
   get:
-    (type: SortAlgoTypes) =>
+    () =>
     ({ get }) => {
-      const selected = get(SortState.childControls.actions);
-      return (
-        selected[type] || [
-          {
-            name: "Play",
-            type: PlayerActionType.PLAY,
-            component: PlayCircleOutlined,
-            isEnable: true,
-            isSelected: false,
-          },
-          {
-            name: "Pause",
-            type: PlayerActionType.PAUSE,
-            component: PauseCircleOutlined,
-            isEnable: true,
-            isSelected: false,
-          }
-        ]
-      );
+      const allControls = get(SortState.childControls.actions);
+      return allControls;
     },
 });
 

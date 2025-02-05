@@ -56,13 +56,13 @@ export const usePlayActionReducer = () => {
             patchActions(
               set,
               { isEnable: true, isSelected: false },
-              SortState.play
+              SortState.play,
+              SortState.reset
             );
             patchActions(
               set,
               { isSelected: false, isEnable: false },
               SortState.pause,
-              SortState.reset
             );
             set(SortState.selectedAction, undefined);
             set(SortState.sourceDataLength, APP_CONFIG.defaultCollectionSize);

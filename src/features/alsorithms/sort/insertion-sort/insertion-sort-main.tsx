@@ -9,7 +9,7 @@ import {
   SortChangeType,
 } from "../../../../shared/models";
 import { useUpdateItem } from "../../../../state/hooks/use-update-item";
-import { insertionSor2, insertionSort } from "./algo";
+import { insertionSor } from "./algo";
 
 const InsertionSortMain = () => {
   const {
@@ -27,45 +27,56 @@ const InsertionSortMain = () => {
 
   useEffect(() => {
     if (data) {
-        insertionSor2([...data])
-    //  iterRef.current = insertionSort([...data]);
+      iterRef.current = insertionSor([...data]);
     }
   }, [data]);
 
   useEffect(() => {
     let timer = null;
     if (isSorting && iterRef.current) {
-      
-    //   const iter = iterRef.current;
-    //   for(let x of iter()){
-    //     console.log("--->",x)
-    //   }
-    //   timer = setInterval(() => {
-    //     const v = iter.next();
-    //     if (!v.done) {
-    //       const value: SortChange = v.value;
-    //       const change = value.changes;
+      const iter = iterRef.current;
 
-    //       if (value.type == SortChangeType.PROCESSING) {
-    //         Object.values(change).forEach((c: any) => {
-    //           update(c.id, {
-    //             borderColor: "border-pink-600",
-    //           });
-    //         });
-    //       }
+      timer = setInterval(() => {
+        const v = iter.next();
+        if (!v.done) {
+          const value: SortChange = v.value;
+          const change = value.changes;
 
-    //       if (value.type == SortChangeType.SORTED) {
-    //         Object.keys(change).forEach((k, i) => {
-    //           const itm = data[k];
-    //           const newVal = change[k].value;
-    //           update(itm.id, {
-    //             value: newVal,
-    //             isSorted: i == 0,
-    //           });
-    //         });
-    //       }
-    //     }
-    //   }, speed);
+          if (value.type == SortChangeType.PROCESSING) {
+            Object.values(change).forEach((c: any) => {
+              update(c.id, {
+                borderColor: "border-pink-600",
+              });
+            });
+          }
+
+          if (value.type == SortChangeType.SWAP) {
+            const keys = Object.keys(change);
+            keys.forEach((k, i) => {
+              const isLast = i == keys.length - 1;
+              const itm = data[k];
+              const newVal = change[k].value;
+              update(itm.id, {
+                value: newVal,
+                bgColor: isLast ? "bg-pink-600 text-pink-300" : "",
+                resetTimeout: isLast ? 500 : 0,
+              });
+            });
+          }
+
+          if (value.type == SortChangeType.SORTED) {
+            console.log(change);
+            Object.keys(change).forEach((k, i) => {
+              const itm = data[k];
+              update(itm.id, {
+                isSorted: true,
+              });
+            });
+          }
+        } else {
+          selectControlHandler(undefined);
+        }
+      }, speed);
     }
 
     return () => {
@@ -74,21 +85,20 @@ const InsertionSortMain = () => {
   }, [iterRef.current, isSorting, speed]);
 
   return (
-    <div>ii</div>
-    // <Card
-    //   title="Insertion Sort"
-    //   extra={
-    //     <PlayControls
-    //       selected={selectedControl}
-    //       actions={playControls}
-    //       onSelect={selectControlHandler}
-    //     />
-    //   }
-    // >
-    //   <div className="h-min">
-    //     <DataGrid data={data} type={SortAlgoTypes.INSERTION_SORT} />
-    //   </div>
-    // </Card>
+    <Card
+      title="Insertion Sort"
+      extra={
+        <PlayControls
+          selected={selectedControl}
+          actions={playControls}
+          onSelect={selectControlHandler}
+        />
+      }
+    >
+      <div className="h-min">
+        <DataGrid data={data} type={SortAlgoTypes.INSERTION_SORT} />
+      </div>
+    </Card>
   );
 };
 

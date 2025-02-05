@@ -45,7 +45,7 @@ const resetAtom = atom<PlayerAction>({
     name: "Reset",
     type: PlayerActionType.RELOAD,
     component: UndoOutlined,
-    isEnable: false,
+    isEnable: true,
     isSelected: false,
   },
 });
@@ -77,24 +77,29 @@ const sourceDataColAtom = atom<SourceDataMap>({
 
 const childSortControls = atom<ChildPlayerActions>({
   key: "sortState.bubbleSort.controls",
-  default: {
-    [SortAlgoTypes.BUBBLE_SORT]: [
-      {
-        name: "Play",
-        type: PlayerActionType.PLAY,
-        component: PlayCircleOutlined,
-        isEnable: true,
-        isSelected: false,
-      },
-      {
-        name: "Pause",
-        type: PlayerActionType.PAUSE,
-        component: PauseCircleOutlined,
-        isEnable: true,
-        isSelected: false,
-      }
-    ],
-  },
+  default: [
+    {
+      name: "Play",
+      type: PlayerActionType.PLAY,
+      component: PlayCircleOutlined,
+      isEnable: true,
+      isSelected: false,
+    },
+    {
+      name: "Pause",
+      type: PlayerActionType.PAUSE,
+      component: PauseCircleOutlined,
+      isEnable: true,
+      isSelected: false,
+    },
+    {
+      name: "Reset",
+      type: PlayerActionType.RELOAD,
+      component: UndoOutlined,
+      isEnable: true,
+      isSelected: false,
+    },
+  ],
 });
 
 const childSelectedPlayerAction = atom<ChildSelectedPlayerAction>({

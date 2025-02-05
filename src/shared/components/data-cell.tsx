@@ -1,8 +1,7 @@
 import { FC, memo, useEffect } from "react";
 import {
-  useRecoilStateLoadable,
   useRecoilValue,
-  useRecoilValueLoadable,
+  useRecoilValueLoadable
 } from "recoil";
 import { twMerge as tw } from "tailwind-merge";
 import { useUpdateItem } from "../../state/hooks/use-update-item";
@@ -25,7 +24,7 @@ const DataCell: FC<{ itemId: string; type: SortAlgoTypes }> = ({
     if (item?.bgColor || item?.borderColor) {
       setTimeout(() => {
         update(item.id, { bgColor: "", borderColor: "" });
-      }, speed);
+      }, item.resetTimeout || speed);
     }
   }, [loadable.contents, speed]);
 
@@ -35,10 +34,10 @@ const DataCell: FC<{ itemId: string; type: SortAlgoTypes }> = ({
     <div
       className={tw(
         "overflow-hidden border flex justify-center items-center text-gray-600",
+        sorted,
         item.bgColor,
         item.borderColor,
         item.animationName,
-        sorted
       )}
       key={item.id}
     >
