@@ -4,14 +4,14 @@ import {
   StopOutlined,
   UndoOutlined,
 } from "@ant-design/icons";
-import { PlayerAction, PlayerActionType } from "./models";
-import { MenuProps, MenuItemProps } from "antd";
-import SortDashboardMain from "../features/algorithms/sort/sort-dashboard/sort-dashboard.main";
-import { ElementType } from "react";
-import SearchDashboard from "../features/algorithms/search/search-dashboard";
-import StackDashboard from "../features/algorithms/stack/stack-dashboard";
-import QueueDashboard from "../features/algorithms/queue/queue-dashboard";
+import { MenuProps } from "antd";
 import { BreadcrumbItemType } from "antd/es/breadcrumb/Breadcrumb";
+import { ElementType } from "react";
+import QueueDashboard from "../features/algorithms/queue/queue-dashboard";
+import SearchDashboard from "../features/algorithms/search/search-dashboard";
+import SortDashboardMain from "../features/algorithms/sort/sort-dashboard/sort-dashboard.main";
+import StackDashboard from "../features/algorithms/stack/stack-dashboard";
+import { PlayerAction, PlayerActionType } from "./models";
 
 export const AllPlayerActions: Array<PlayerAction> = [
   {
