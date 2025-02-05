@@ -11,13 +11,13 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RecoilRoot>
       {/* <DebugObserver/> */}
-      <TransactionObserver/>
+      <TransactionObserver />
       <ConfigProvider
         theme={{
           algorithm: theme.darkAlgorithm,
         }}
       >
-        <BrowserRouter>
+        <BrowserRouter basename="/algorithm-playground/">
           <AppRoutes />
         </BrowserRouter>
       </ConfigProvider>
