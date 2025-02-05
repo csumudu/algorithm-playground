@@ -1,9 +1,8 @@
-import { Card } from "antd";
 import BubbleSortMain from "../alsorithms/sort/bubble-sort/bubble-sort-main";
-import SelectionSortMain from "../alsorithms/sort/selection-sort/selection-sort.main";
 import InsertionSortMain from "../alsorithms/sort/insertion-sort/insertion-sort-main";
 import MergeSortMain from "../alsorithms/sort/merge-sort/merge-sort.main";
 import QuickSortMain from "../alsorithms/sort/quick-sort/quick-sort.main";
+import SelectionSortMain from "../alsorithms/sort/selection-sort/selection-sort.main";
 
 const DashboardMain = () => {
   return (
