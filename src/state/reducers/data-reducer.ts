@@ -7,7 +7,9 @@ import { useTransition } from "react";
 const allSourceDataTypes = [
   SortAlgoTypes.BUBBLE_SORT,
   SortAlgoTypes.SELECTION_SORT,
+  SortAlgoTypes.QUICK_SORT,
   SortAlgoTypes.INSERTION_SORT,
+  SortAlgoTypes.MERGE_SORT,
 ];
 
 export const useDataReducer = () => {
@@ -18,7 +20,7 @@ export const useDataReducer = () => {
       (rowData) => {
         setTransition(() => {
           const rowStr = rowData.toString();
-          
+
           allSourceDataTypes.forEach((type) => {
             let source = get(SortState.sourceData)?.[type] || [];
             const sourceStr = source.map((s) => s.value).toString();

@@ -62,6 +62,8 @@ export enum SortAlgoTypes {
   BUBBLE_SORT = "BUBBLE_SORT",
   SELECTION_SORT = "SELECTION_SORT",
   INSERTION_SORT = "INSERTION_SORT",
+  QUICK_SORT = "QUICK_SORT",
+  MERGE_SORT = "MERGE_SORT",
 }
 
 export type SourceDataMap = {

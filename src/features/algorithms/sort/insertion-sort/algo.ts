@@ -4,7 +4,7 @@ import {
   SortChangeType,
 } from "../../../../shared/models";
 
-export function* insertionSor(
+export function* insertionSort(
   col: Array<DataItem<number>>
 ): Generator<SortChange> {
   const source = [...col];

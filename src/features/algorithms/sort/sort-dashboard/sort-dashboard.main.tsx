@@ -1,19 +1,14 @@
-import BubbleSortMain from "../bubble-sort/bubble-sort-main";
-import HeapSortMain from "../heap-sort/heap-sort.main";
-import InsertionSortMain from "../insertion-sort/insertion-sort-main";
-import MergeSortMain from "../merge-sort/merge-sort.main";
-import QuickSortMain from "../quick-sort/quick-sort.main";
-import SelectionSortMain from "../selection-sort/selection-sort.main";
+import { SortAlgoTypes } from "../../../../shared/models";
+import SortWidget from "./sort-widget";
 
 const SortDashboardMain = () => {
   return (
     <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] ">
-      <BubbleSortMain />
-      <SelectionSortMain />
-      <InsertionSortMain />
-      <MergeSortMain />
-      <QuickSortMain />
-      <HeapSortMain />
+      <SortWidget title="Quick Sort" type={SortAlgoTypes.QUICK_SORT} />
+      <SortWidget title="Bubble Sort" type={SortAlgoTypes.BUBBLE_SORT} />
+      <SortWidget title="Insertion Sort" type={SortAlgoTypes.INSERTION_SORT} />
+      <SortWidget title="Selection Sort" type={SortAlgoTypes.SELECTION_SORT} />
+      <SortWidget title="Merge Sort" type={SortAlgoTypes.MERGE_SORT} />
     </div>
   );
 };
