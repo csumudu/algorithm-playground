@@ -16,12 +16,12 @@ export function* mergeSort(
   const source = [...col];
   const result = divide(source);
   console.log("Tree-->", result);
-  const merge = join(result);
+ // const merge = join(result);
 
   yield {
     type: SortChangeType.COMPLETED,
     changes: {
-      result: merge,
+      result: [],
     },
   };
 }
@@ -44,26 +44,25 @@ function divide(col: Array<DataItem<number>>): SplitRes {
   }
 }
 
-function join(tree: SplitRes) {
-  if (tree.source.length > 2) {
-   tree.children.forEach(c=>{
-        if(c.children.length){
-            join(c)
-        }else{
-            tree.source.forEach((s,i)=>{
-                if(s.value> c.source[0]?.value){
-                    const tmp = tree.source[i]
-                    tree.source[i] = c.source[0]
-                }
-            })
-        }
-   })
-  } else {
-    const [a, b] = tree.source;
-    if (a?.value > b?.value) {
-      const tmp = tree.source[0];
-      tree.source[0] = tree.source[1];
-      tree.source[1] = tmp;
-    }
-  }
-}
+// function join(tree: SplitRes) {
+//   if (tree.source.length > 2) {
+//    tree.children.forEach(c=>{
+//         if(c.children.length){
+//             join(c)
+//         }else{
+//             tree.source.forEach((s,i)=>{
+//                 if(s.value> c.source[0]?.value){
+//                     tree.source[i] = c.source[0]
+//                 }
+//             })
+//         }
+//    })
+//   } else {
+//     const [a, b] = tree.source;
+//     if (a?.value > b?.value) {
+//       const tmp = tree.source[0];
+//       tree.source[0] = tree.source[1];
+//       tree.source[1] = tmp;
+//     }
+//   }
+// }

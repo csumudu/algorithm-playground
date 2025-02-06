@@ -6,8 +6,8 @@ import {
 
 export const mergeSortVisualizer = (
   value: SortChange,
-  update: (id: string, val: Partial<DataItem<number>>) => void,
-  data: DataItem<number>[]
+  _update: (id: string, val: Partial<DataItem<number>>) => void,
+  _data: DataItem<number>[]
 ) => {
   const change = value.changes;
 
