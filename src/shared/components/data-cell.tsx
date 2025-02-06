@@ -1,8 +1,5 @@
 import { FC, memo, useEffect } from "react";
-import {
-  useRecoilValue,
-  useRecoilValueLoadable
-} from "recoil";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 import { twMerge as tw } from "tailwind-merge";
 import { useUpdateItem } from "../../state/hooks/use-update-item";
 import { SortState } from "../../state/sort/sort-data.atoms";
@@ -29,11 +26,13 @@ const DataCell: FC<{ itemId: string; type: SortAlgoTypes }> = ({
   }, [loadable.contents, speed]);
 
   const sorted = item.isSorted ? "bg-blue-700 text-blue-400" : "";
+  const marked = item.isMarked ? "bg-pink-600 text-pink-300" : "";
 
   return (
     <div
       className={tw(
         "overflow-hidden border flex justify-center items-center text-gray-600",
+        marked,
         sorted,
         item.bgColor,
         item.borderColor,

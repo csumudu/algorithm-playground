@@ -17,6 +17,7 @@ export interface DataItem<T> {
   borderColor?: string;
   isSorted?: boolean;
   resetTimeout?: number;
+  isMarked?:boolean;
 }
 
 export enum PlayerActionType {
@@ -41,6 +42,8 @@ export enum SortChangeType {
   HIGHLIGHT = "HIGHLIGHT",
   PROCESSING = "PROCESSING",
   COMPLETED = "COMPLETED",
+  MARK = "MARK",
+  UNMARK = "UNMARK",
 }
 
 export interface SortChange {

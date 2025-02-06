@@ -19,11 +19,13 @@ export function* selectionSort(
 
       if (min == null) {
         min = { index: x, item: col[x] };
+        yield getEvent(SortChangeType.MARK, x, col[x]);
       }
 
       if (col[x].value < min.item.value) {
+        yield getEvent(SortChangeType.UNMARK, x, min.item);
         min = { index: x, item: col[x] };
-        yield getEvent(SortChangeType.HIGHLIGHT, x, min);
+        yield getEvent(SortChangeType.MARK, x, min.item);
       }
     }
     if (y !== min.index) {
@@ -47,11 +49,17 @@ export function* selectionSort(
       };
     }
   }
-
-  console.log("*********->", col);
 }
 
 const getEvent = (type, index, item) => {
+  if (type == SortChangeType.MARK || type == SortChangeType.UNMARK) {
+    return {
+      type,
+      changes: {
+        item,
+      },
+    };
+  }
   return {
     type: type,
     changes: {
