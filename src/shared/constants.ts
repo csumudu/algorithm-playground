@@ -100,7 +100,7 @@ export const BreadcrumbConfig: {
 } = {
   [MenuKeys.SORT]: [
     {
-      title: "SORT",
+      title: "SORTING",
     },
   ],
   [MenuKeys.SEARCH]: [
