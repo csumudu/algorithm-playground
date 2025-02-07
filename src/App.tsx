@@ -13,11 +13,12 @@ function App() {
   } = theme.useToken();
 
   return (
-    <Layout className="h-svh ">
+    <Layout className="h-svh">
       <AppHeader />
       <Content style={{ padding: "0 48px" }}>
         <AppBreadcrumbs />
         <Layout
+          className="flex"
           style={{
             padding: "1.5rem 0 5rem",
             background: colorBgContainer,
@@ -26,6 +27,7 @@ function App() {
           }}
         >
           <Sider
+            breakpoint="md"
             style={{ background: colorBgContainer, height: "95%" }}
             width={250}
           >

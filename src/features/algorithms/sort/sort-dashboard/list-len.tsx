@@ -16,7 +16,7 @@ const ListLength = () => {
   };
 
   return (
-    <div>
+    <div className="hidden md:block">
       <label className="text-gray-500 text-sm">Number of Items</label>
       <InputNumber
         style={{ width: "100%" }}

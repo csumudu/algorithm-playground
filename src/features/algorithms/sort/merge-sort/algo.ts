@@ -1,68 +1,74 @@
-import {
-  DataItem,
-  SortChange,
-  SortChangeType,
-} from "../../../../shared/models";
-
-type DataItemCol = Array<DataItem<number>>;
-type SplitRes = {
-  source: DataItemCol;
-  children: Array<SplitRes>;
-};
+import { DataItem, SortChangeType } from "../../../../shared/models";
 
 export function* mergeSort(
-  col: Array<DataItem<number>>
-): Generator<SortChange> {
-  const source = [...col];
-  const result = divide(source);
-  console.log("Tree-->", result);
- // const merge = join(result);
+  arr: Array<DataItem<number>>,
+  start = 0,
+  end = arr.length - 1
+) {
+  if (start >= end) return;
 
-  yield {
-    type: SortChangeType.COMPLETED,
-    changes: {
-      result: [],
-    },
-  };
+  const mid = Math.floor((start + end) / 2);
+  yield* mergeSort(arr, start, mid);
+  yield* mergeSort(arr, mid + 1, end);
+  yield* merge(arr, start, mid, end);
 }
 
-function divide(col: Array<DataItem<number>>): SplitRes {
-  if (col.length > 1) {
-    const mid = Math.floor(col.length / 2);
+function* merge(
+  arr: Array<DataItem<number>>,
+  start: number,
+  mid: number,
+  end: number
+) {
+  let left = arr.slice(start, mid + 1);
+  let right = arr.slice(mid + 1, end + 1);
+  let i = 0,
+    j = 0,
+    k = start;
 
-    const left = col.slice(0, mid);
-    const right = col.slice(mid, col.length);
-    return {
-      source: col,
-      children: [divide(left), divide(right)],
+  while (i < left.length && j < right.length) {
+    if (left[i].value <= right[j].value) {
+      arr[k] = left[i];
+      i++;
+    } else {
+      arr[k] = right[j];
+      j++;
+    }
+    yield {
+      type: SortChangeType.MOVED,
+      changes: { [k]: arr[k] },
     };
-  } else {
-    return {
-      source: col,
-      children: [],
+    k++;
+  }
+
+  while (i < left.length) {
+    arr[k] = left[i];
+    yield {
+      type: SortChangeType.MOVED,
+      changes: { [k]: arr[k] },
     };
+    i++;
+    k++;
+  }
+
+  while (j < right.length) {
+    arr[k] = right[j];
+    yield {
+      type: SortChangeType.MOVED,
+      changes: { [k]: arr[k] },
+    };
+    j++;
+    k++;
+  }
+
+  for (let x = start; x <= end; x++) {
+    if (
+      (x === 0 || arr[x].value >= arr[x - 1].value) &&
+      (x === arr.length - 1 || arr[x].value <= arr[x + 1].value)
+    ) {
+      yield {
+        type: SortChangeType.SORTED,
+        changes: { [x]: arr[x] },
+      };
+    }
   }
 }
-
-// function join(tree: SplitRes) {
-//   if (tree.source.length > 2) {
-//    tree.children.forEach(c=>{
-//         if(c.children.length){
-//             join(c)
-//         }else{
-//             tree.source.forEach((s,i)=>{
-//                 if(s.value> c.source[0]?.value){
-//                     tree.source[i] = c.source[0]
-//                 }
-//             })
-//         }
-//    })
-//   } else {
-//     const [a, b] = tree.source;
-//     if (a?.value > b?.value) {
-//       const tmp = tree.source[0];
-//       tree.source[0] = tree.source[1];
-//       tree.source[1] = tmp;
-//     }
-//   }
-// }

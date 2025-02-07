@@ -12,10 +12,10 @@ const SortDashboardConfig = () => {
   const setSelectedAction = useSetRecoilState(SortState.selectedAction);
   return (
     <div className="pl-5">
-      <Card title="Configurations">
-        <div className="flex flex-col gap-5">
+      <Card title={<div className="hidden sm:block">Configurations</div>}>
+        <div className="flex flex-col gap-5 ">
           <ListLength />
-          <div>
+          <div className="hidden md:block">
             <label className="text-gray-500 text-sm">Speed : {speed} ms</label>
             <AppSlider />
           </div>

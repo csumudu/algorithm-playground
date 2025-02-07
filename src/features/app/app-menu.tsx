@@ -27,17 +27,18 @@ const AppMenu = () => {
   };
 
   return (
-    <div className="flex justify-between w-full">
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={[MenuKeys.SORT]}
-        items={MainMenuItems}
-        selectedKeys={[selected]}
-        style={{ flex: 1, minWidth: "300px" }}
-        onSelect={handleNavigation}
-      />
-      <div className="flex items-center">
+    <div className="flex flex-1 justify-between">
+      <div className="hidden md:block">
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={[MenuKeys.SORT]}
+          items={MainMenuItems}
+          selectedKeys={[selected]}
+          onSelect={handleNavigation}
+        />
+      </div>
+      <div className="flex items-center self-end">
         <a
           href="https://github.com/csumudu/algorithm-playground"
           target="_blank"

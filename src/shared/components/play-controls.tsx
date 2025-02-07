@@ -8,7 +8,7 @@ const PlayControls: FC<{
   selected?: PlayerAction;
 }> = ({ actions, onSelect, selected }) => {
   return (
-    <div className="flex justify-center items-center gap-3">
+    <div className="flex justify-center items-center gap-3 flex-wrap">
       {actions.map((ctrl) => {
         const isMatch = ctrl.type == selected?.type;
 
