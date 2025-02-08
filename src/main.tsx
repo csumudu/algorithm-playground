@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")!).render(
           algorithm: theme.darkAlgorithm,
         }}
       >
-        <BrowserRouter basename="/algorithm-playground/">
+        <BrowserRouter >
           <AppRoutes />
         </BrowserRouter>
       </ConfigProvider>
