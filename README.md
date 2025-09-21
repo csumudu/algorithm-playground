@@ -163,8 +163,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🌟 Acknowledgments
 
 - Built with ❤️ by [callstacksurfer.com](https://callstacksurfer.com)
-- Inspired by the need to make algorithm learning more visual and interactive
-- Thanks to all contributors who help improve this educational tool
 
 ---
 
