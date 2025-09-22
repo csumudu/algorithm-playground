@@ -1,6 +1,8 @@
 import { DataItem, SortAlgoTypes, SortChange } from "../../../shared/models";
 import { bubbleSort } from "../sort/bubble-sort/algo";
 import { bubbleSortVisualizer } from "../sort/bubble-sort/visualizer";
+import { heapSort } from "../sort/heap-sort/algo";
+import { heapSortVisualizer } from "../sort/heap-sort/visualizer";
 import { insertionSort } from "../sort/insertion-sort/algo";
 import { insertionSortVisualizer } from "../sort/insertion-sort/visualizer";
 import { mergeSort } from "../sort/merge-sort/algo";
@@ -17,6 +19,8 @@ export class AlgorithmFactory {
     switch (type) {
       case SortAlgoTypes.BUBBLE_SORT:
         return bubbleSort;
+      case SortAlgoTypes.HEAP_SORT:
+        return heapSort;
       case SortAlgoTypes.INSERTION_SORT:
         return insertionSort;
       case SortAlgoTypes.SELECTION_SORT:
@@ -36,6 +40,8 @@ export class AlgorithmFactory {
         return insertionSortVisualizer;
       case SortAlgoTypes.BUBBLE_SORT:
         return bubbleSortVisualizer;
+      case SortAlgoTypes.HEAP_SORT:
+        return heapSortVisualizer;
       case SortAlgoTypes.SELECTION_SORT:
         return selectionSortVisualizer;
       case SortAlgoTypes.MERGE_SORT:

@@ -64,6 +64,7 @@ export enum SortAlgoTypes {
   INSERTION_SORT = "INSERTION_SORT",
   QUICK_SORT = "QUICK_SORT",
   MERGE_SORT = "MERGE_SORT",
+  HEAP_SORT = "HEAP_SORT",
 }
 
 export type SourceDataMap = {
